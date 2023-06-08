@@ -8,6 +8,7 @@ public class SphereScript : MonoBehaviour
     public float waterHeight = 2f;
     public float heightFactor=0.1f;
     public bool isCastedCorrectly=false;
+    public bool sphereInPlace = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +33,11 @@ public class SphereScript : MonoBehaviour
             //gameObject.transform.Translate(Vector3.up * Time.deltaTime);
             gameObject.transform.Translate(-transform.up * Time.deltaTime);
         }
-        /*else
+        else if(isCastedCorrectly)
         {
-            Debug.Log("Stable Sphere");
-        }*/
+            //Debug.Log("Stable Sphere");
+            sphereInPlace = true;
+        }
         
         //Debug.Log("tp"+transform.position);
         //Debug.Log("tpl"+transform.localPosition);
