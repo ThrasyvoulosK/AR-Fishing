@@ -19,23 +19,23 @@ public class SphereScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("tp" + gameObject.transform.position.y);
+        //Debug.Log("tp" + gameObject.transform.position.y);
         if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight+heightFactor)))
         {
-            Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
+            //Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
             //gameObject.transform.Translate(Vector3.down * Time.deltaTime);
             gameObject.transform.Translate(transform.up * Time.deltaTime);
         }
         else if (isCastedCorrectly && (gameObject.transform.position.y < (waterHeight-heightFactor)))
         {
-            Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
+            //Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
             //gameObject.transform.Translate(Vector3.up * Time.deltaTime);
             gameObject.transform.Translate(-transform.up * Time.deltaTime);
         }
-        else
+        /*else
         {
             Debug.Log("Stable Sphere");
-        }
+        }*/
         
         //Debug.Log("tp"+transform.position);
         //Debug.Log("tpl"+transform.localPosition);

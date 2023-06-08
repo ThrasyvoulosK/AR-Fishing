@@ -6,10 +6,14 @@ public class CastScript : MonoBehaviour
 {
     bool goodCast = false;
     Animator animator;
+
+    SphereScript sphereScript;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+
+        sphereScript = GetComponentInChildren<SphereScript>();
     }
 
     // Update is called once per frame
@@ -38,6 +42,8 @@ public class CastScript : MonoBehaviour
         {
             animator.StopPlayback();
             animator.enabled = false;
+
+            sphereScript.isCastedCorrectly = true;
         }
         else if(animatorClipInfo[0].clip.name == "IdleRod")
         {
