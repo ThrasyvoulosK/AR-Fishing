@@ -34,7 +34,7 @@ public class FishScript : MonoBehaviour
 
     IEnumerator RandomFish()
     {
-        Debug.Log("Starting Coroutine");
+        //Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(1f);
         float chance = Random.Range(0f, 1f);
         Debug.Log(chance);
@@ -63,6 +63,15 @@ public class FishScript : MonoBehaviour
 
             //
             Instantiate(fish[0],transform);
+            CastScript castScript=transform.parent.transform.parent.GetComponent<CastScript>();
+            castScript.fishReset = true;
+            //transform.parent.transform.parent.gameObject.GetComponent<Animation>().Play("ReelRod");
+            transform.parent.transform.parent.gameObject.GetComponent<Animator>().enabled = true;
+            /*transform.parent.transform.parent.gameObject.GetComponent<Animator>().Play("ReelRod");
+            Debug.Log(transform.parent.transform.parent.gameObject.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);*/
+            //Debug.Log(transform.parent.transform.parent.gameObject.GetComponent<AnimationState>().clip.name);
+            transform.parent.transform.parent.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
+            transform.parent.transform.parent.gameObject.GetComponent<Animation>().Play("ReelRod");
         }
 
         yield return new WaitForSeconds(1f);

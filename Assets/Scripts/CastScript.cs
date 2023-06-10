@@ -38,16 +38,36 @@ public class CastScript : MonoBehaviour
         //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
         AnimatorClipInfo[] animatorClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         //Debug.Log(animatorClipInfo[0].clip.name);
-        if(animatorClipInfo[0].clip.name=="PushRodEnd")
+        //Debug.Log(animatorClipInfo==null);
+        //Debug.Log(animator.enabled);
+        //Debug.Log(animator.GetCurrentAnimatorClipInfo(0));
+        //Debug.Log(animatorClipInfo.Length);
+        if (animatorClipInfo.Length > 0)
         {
-            animator.StopPlayback();
-            animator.enabled = false;
+            //Debug.Log(animatorClipInfo[0].clip.name);
+            if (animatorClipInfo[0].clip.name == "PushRodEnd")
+            {
+                animator.StopPlayback();
+                animator.enabled = false;
 
-            sphereScript.isCastedCorrectly = true;
+                sphereScript.isCastedCorrectly = true;
+            }
+            else if (animatorClipInfo[0].clip.name == "IdleRod")
+            {
+                fishReset = false;
+            }
+            /*else if (animatorClipInfo[0].clip.name == "ReelRodEnd")
+            {
+                Debug.Log("Reeling");
+                //animator.enabled = true;
+                //sphereScript.isCastedCorrectly = false;
+            }*/
         }
-        else if(animatorClipInfo[0].clip.name == "IdleRod")
+        else
         {
-            fishReset = false;
+            Debug.Log("Reeling");
+            /*animator.Play("ReelRod");
+            Debug.Log(animator.GetNextAnimatorClipInfo(0)[0].clip.name);*/
         }
     }
     public bool fishReset = false;
@@ -55,5 +75,10 @@ public class CastScript : MonoBehaviour
     {
         if(fishReset)
             animator.enabled = true;
+    }
+
+    public void ToggleFishReset()
+    {
+        fishReset=!fishReset;
     }
 }
