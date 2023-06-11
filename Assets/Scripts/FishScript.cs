@@ -61,21 +61,37 @@ public class FishScript : MonoBehaviour
             //StopCoroutine(RandomFish());
             StopAllCoroutines();
 
-            //
-            Instantiate(fish[0],transform);
-            CastScript castScript=transform.parent.transform.parent.GetComponent<CastScript>();
-            castScript.fishReset = true;
-            //transform.parent.transform.parent.gameObject.GetComponent<Animation>().Play("ReelRod");
-            transform.parent.transform.parent.gameObject.GetComponent<Animator>().enabled = true;
-            /*transform.parent.transform.parent.gameObject.GetComponent<Animator>().Play("ReelRod");
-            Debug.Log(transform.parent.transform.parent.gameObject.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);*/
-            //Debug.Log(transform.parent.transform.parent.gameObject.GetComponent<AnimationState>().clip.name);
-            transform.parent.transform.parent.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
-            transform.parent.transform.parent.gameObject.GetComponent<Animation>().Play("ReelRod");
+            CatchFish();
+
+
+            //Reel();
         }
 
         yield return new WaitForSeconds(1f);
         //StartCoroutine(RandomFish());
 
+    }
+
+    void CatchFish()
+    {
+        //choose which fish to catch
+        float fishGOChance = Random.Range(1, fish.Count);
+        int fishSelected = (int)fishGOChance;
+        Debug.Log("Fish Chosen:" + fishSelected);
+        Instantiate(fish[fishSelected], transform);
+    }
+
+    public void Reel()
+    {
+        Transform rod = transform.parent.transform.parent;
+
+        //play reel animation
+        CastScript castScript = rod.GetComponent<CastScript>();
+        castScript.fishReset = true;
+
+        rod.gameObject.GetComponent<Animator>().enabled = true;
+
+        rod.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
+        rod.gameObject.GetComponent<Animation>().Play("ReelRod");
     }
 }
