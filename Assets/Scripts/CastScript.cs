@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CastScript : MonoBehaviour
 {
@@ -8,24 +9,33 @@ public class CastScript : MonoBehaviour
     Animator animator;
 
     SphereScript sphereScript;
+    Button castButton;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
 
         sphereScript = GetComponentInChildren<SphereScript>();
+
+        castButton = GameObject.Find("Canvas").transform.Find("CastButton").GetComponent<Button>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (checkCast() == false)
+            castButton.interactable = false;
+        else
+            castButton.interactable = true;
+
         StopAnimation();
         ResetAnimation(fishReset);
     }
 
     bool checkCast()
     {
-        if (gameObject.transform.parent.rotation.x >= 30||gameObject.transform.parent.rotation.x <= -30)
+        //Debug.Log("cast rotation:"+gameObject.transform.parent.rotation.x);
+        if (gameObject.transform.parent.rotation.x >= 0.1f||gameObject.transform.parent.rotation.x <= -0.1f)
             return false;
         return true;
     }
