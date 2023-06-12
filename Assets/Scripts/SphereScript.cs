@@ -44,22 +44,7 @@ public class SphereScript : MonoBehaviour
                     sphereInPlace = true;
                 }
             }
-        /*else
-        {
-            if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor)))
-            {
-                Debug.Log("Sphere in wrong place");
-                gameObject.transform.Translate(transform.up * Time.deltaTime);
-                sphereInPlace = false;
-            }
-            else if (isCastedCorrectly && (gameObject.transform.position.y < (waterHeight - heightFactor)))
-            {
-                Debug.Log("Sphere in wrong place");
-                gameObject.transform.Translate(-transform.up * Time.deltaTime);
-                sphereInPlace = false;
-            }
-        }
-    }*/
+        
 
         //Debug.Log("tp"+transform.position);
         //Debug.Log("tpl"+transform.localPosition);

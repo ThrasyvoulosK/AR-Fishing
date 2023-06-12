@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CastScript : MonoBehaviour
 {
-    bool goodCast = false;
-    Animator animator;
+    public Animator animator;
+    public bool fishReset = false;
 
     SphereScript sphereScript;
     Button castButton;
@@ -34,7 +34,6 @@ public class CastScript : MonoBehaviour
 
     bool checkCast()
     {
-        //Debug.Log("cast rotation:"+gameObject.transform.parent.rotation.x);
         if (gameObject.transform.parent.rotation.x >= 0.1f||gameObject.transform.parent.rotation.x <= -0.1f)
             return false;
         return true;
@@ -42,21 +41,14 @@ public class CastScript : MonoBehaviour
 
     void StopAnimation()
     {
-        
-        
-        //AnimationState animationState= animator.animatio;
-        //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
         AnimatorClipInfo[] animatorClipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        //Debug.Log(animatorClipInfo[0].clip.name);
-        //Debug.Log(animatorClipInfo==null);
-        //Debug.Log(animator.enabled);
-        //Debug.Log(animator.GetCurrentAnimatorClipInfo(0));
-        //Debug.Log(animatorClipInfo.Length);
+
         if (animatorClipInfo.Length > 0)
         {
             //Debug.Log(animatorClipInfo[0].clip.name);
             if (animatorClipInfo[0].clip.name == "PushRodEnd")
             {
+                //Debug.Log("PushRodEnd");
                 animator.StopPlayback();
                 animator.enabled = false;
 
@@ -64,7 +56,18 @@ public class CastScript : MonoBehaviour
             }
             else if (animatorClipInfo[0].clip.name == "IdleRod")
             {
-                fishReset = false;
+                //Debug.Log("IdleRod");
+                //fishReset = false;
+                if(transform.Find("Sphere").transform.Find("Fish").childCount>0)
+                {
+                    Debug.Log("Ending Condition");
+                    transform.Find("Sphere").transform.Find("Fish").GetComponent<FishScript>().fishWait = false;
+                    sphereScript.isCastedCorrectly = false;
+                    fishReset = false;
+
+                    //Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
+
+                }
             }
             /*else if (animatorClipInfo[0].clip.name == "ReelRodEnd")
             {
@@ -72,23 +75,35 @@ public class CastScript : MonoBehaviour
                 //animator.enabled = true;
                 //sphereScript.isCastedCorrectly = false;
             }*/
+            else if(animatorClipInfo[0].clip.name == "PullRod")
+            {
+                if (transform.Find("Sphere").transform.Find("Fish").childCount > 0)
+                    Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
+            }
+            else
+                Debug.Log(animatorClipInfo[0].clip.name);
         }
         else
         {
-            Debug.Log("Reeling");
-            /*animator.Play("ReelRod");
-            Debug.Log(animator.GetNextAnimatorClipInfo(0)[0].clip.name);*/
+            /*Debug.Log("Reeling");
+            //animator.Play("ReelRod");
+            //Debug.Log(animator.GetNextAnimatorClipInfo(0)[0].clip.name);
+
+            //animator.StopPlayback();
+            animator.enabled = true;
+
+            sphereScript.isCastedCorrectly = false;*/
         }
     }
-    public bool fishReset = false;
+    
     void ResetAnimation(bool fishReset)
     {
         if(fishReset)
             animator.enabled = true;
     }
 
-    public void ToggleFishReset()
+    /*public void ToggleFishReset()
     {
         fishReset=!fishReset;
-    }
+    }*/
 }

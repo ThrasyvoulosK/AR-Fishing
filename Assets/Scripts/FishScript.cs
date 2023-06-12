@@ -8,12 +8,17 @@ public class FishScript : MonoBehaviour
     List<GameObject> fish;
 
     SphereScript sphereScript;
-    bool fishWait = false;
+    CastScript castScript;
+    public bool fishWait = false;
     float fishChance = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
         sphereScript = GetComponentInParent<SphereScript>();
+
+        castScript = sphereScript.gameObject.GetComponentInParent<CastScript>();
+
+        Debug.Log(castScript.fishReset + " " + sphereScript.isCastedCorrectly + " " + sphereScript.sphereInPlace + " " + fishWait);
     }
 
     // Update is called once per frame
@@ -34,41 +39,26 @@ public class FishScript : MonoBehaviour
 
     IEnumerator RandomFish()
     {
-        //Debug.Log("Starting Coroutine");
+        Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(1f);
         float chance = Random.Range(0f, 1f);
-        Debug.Log(chance);
-        /*if(chance<0.1f)
-        {
-            Debug.Log("Fish Caught!");
-            //StopCoroutine(RandomFish());
-            StopAllCoroutines();
 
-        }
-        else
-        {
-            Debug.Log("Fish Not Caught. Wait some more!");
-        }*/
         if(chance>fishChance)
         {
             Debug.Log("Fish Not Caught. Wait some more!");
-            //yield return new WaitForSeconds(1f);
             StartCoroutine(RandomFish());
         }
         else
         {
             Debug.Log("Fish Caught!");
-            //StopCoroutine(RandomFish());
             StopAllCoroutines();
 
             CatchFish();
-
 
             //Reel();
         }
 
         yield return new WaitForSeconds(1f);
-        //StartCoroutine(RandomFish());
 
     }
 
@@ -83,6 +73,7 @@ public class FishScript : MonoBehaviour
 
     public void Reel()
     {
+        Debug.Log("Reel");
         Transform rod = transform.parent.transform.parent;
 
         //play reel animation
@@ -92,6 +83,35 @@ public class FishScript : MonoBehaviour
         rod.gameObject.GetComponent<Animator>().enabled = true;
 
         rod.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
-        rod.gameObject.GetComponent<Animation>().Play("ReelRod");
+        //rod.gameObject.GetComponent<Animation>().Play("ReelRod");
+
+        FishingRestart();
     }
+
+    void FishingRestart()
+    {
+        if(transform.childCount>0)
+        {
+            Debug.Log("We've got a fish!");
+            Debug.Log(castScript.fishReset+" " + sphereScript.isCastedCorrectly +" "+ sphereScript.sphereInPlace +" " +fishWait);
+            //falsify all booleans
+
+            //castScript.fishReset = false;
+            //castScript.fishReset = true;
+            //castScript.animator.enabled = true;
+            //castScript.animator.Play("IdleRod");
+
+            sphereScript.isCastedCorrectly = false;
+            //sphereScript.sphereInPlace = false;
+
+            //fishWait = false;
+        }
+    }
+
+    /*public void FishDisappear()
+    {
+        GameObject fishObject = gameObject.transform.GetChild(0).gameObject;
+
+        //fishObject.GetComponent<>
+    }*/
 }
