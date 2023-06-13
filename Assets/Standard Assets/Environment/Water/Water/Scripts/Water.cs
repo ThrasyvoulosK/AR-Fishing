@@ -32,6 +32,11 @@ namespace UnityStandardAssets.Water
         private int m_OldRefractionTextureSize;
         private static bool s_InsideWater;
 
+        private void Start()
+        {
+            GetComponent<MeshRenderer>().enabled = true;
+        }
+
 
         // This is called when it's known that the object will be rendered by some
         // camera. We render reflections / refractions and do other updates here.
@@ -169,6 +174,7 @@ namespace UnityStandardAssets.Water
         // Cleanup all the objects we possibly have created
         void OnDisable()
         {
+            //return;
             if (m_ReflectionTexture)
             {
                 DestroyImmediate(m_ReflectionTexture);
