@@ -10,6 +10,9 @@ public class CastScript : MonoBehaviour
 
     SphereScript sphereScript;
     Button castButton;
+
+    [SerializeField]
+    Material material;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +61,7 @@ public class CastScript : MonoBehaviour
             {
                 //Debug.Log("IdleRod");
                 //fishReset = false;
-                if(transform.Find("Sphere").transform.Find("Fish").childCount>0)
+                if (transform.Find("Sphere").transform.Find("Fish").childCount > 0)
                 {
                     Debug.Log("Ending Condition");
                     transform.Find("Sphere").transform.Find("Fish").GetComponent<FishScript>().fishWait = false;
@@ -66,8 +69,11 @@ public class CastScript : MonoBehaviour
                     fishReset = false;
 
                     //Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
+                    StartCoroutine(Invisivise());
 
                 }
+                else
+                    StopCoroutine(Invisivise());
             }
             /*else if (animatorClipInfo[0].clip.name == "ReelRodEnd")
             {
@@ -78,7 +84,9 @@ public class CastScript : MonoBehaviour
             else if(animatorClipInfo[0].clip.name == "PullRod")
             {
                 if (transform.Find("Sphere").transform.Find("Fish").childCount > 0)
-                    Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
+                {
+                    //StartCoroutine(Invisivise());                    
+                }
             }
             else
                 Debug.Log(animatorClipInfo[0].clip.name);
@@ -106,4 +114,46 @@ public class CastScript : MonoBehaviour
     {
         fishReset=!fishReset;
     }*/
+
+    IEnumerator Invisivise()
+    {
+        if (transform.Find("Sphere").transform.Find("Fish").childCount <= 0)
+        {
+            Debug.Log("No fish");
+            yield return null;
+        }
+        Debug.Log("Invisivise "+ transform.Find("Sphere").transform.Find("Fish").childCount);
+        GameObject fishy = transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject;
+        //Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
+        Renderer renderer = fishy.GetComponent<Renderer>();
+        //renderer.material.renderingMode
+        renderer.material = material;
+        Color color = renderer.material.color;
+        /*if(color.a==0)
+        {
+            Destroy(fishy);
+            yield return null;
+        }*/
+        //for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
+        for (float alpha = 1f; alpha >= 0; alpha -= 0.05f)
+        {
+            Debug.Log("Alpha " + alpha);
+            color.a = alpha;
+            if (fishy == null)
+            {
+                Debug.Log(fishy == null);
+                yield return null;
+            }
+            else
+                renderer.material.color = color;
+            if(color.a<=0.08)
+            {
+                Destroy(fishy);
+                yield return null;
+            }
+            //renderer.material.color = color;
+            yield return null;
+        }
+        //renderer.material.color = color;
+    }
 }

@@ -804,6 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   fishReset: 0
+  material: {fileID: 2100000, guid: 23f6c5064b7ce7d4b8e9ae350388d2dc, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

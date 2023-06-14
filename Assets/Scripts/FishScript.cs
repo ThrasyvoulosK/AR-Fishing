@@ -51,7 +51,8 @@ public class FishScript : MonoBehaviour
         else
         {
             Debug.Log("Fish Caught!");
-            StopAllCoroutines();
+            //StopAllCoroutines();
+            StopCoroutine(RandomFish());
 
             CatchFish();
 
