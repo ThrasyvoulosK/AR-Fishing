@@ -44,6 +44,7 @@ namespace UnityStandardAssets.Water
         // camera will just work!
         public void OnWillRenderObject()
         {
+            //Debug.Log("WillRenderWater");
             if (!enabled || !GetComponent<Renderer>() || !GetComponent<Renderer>().sharedMaterial ||
                 !GetComponent<Renderer>().enabled)
             {
@@ -174,6 +175,7 @@ namespace UnityStandardAssets.Water
         // Cleanup all the objects we possibly have created
         void OnDisable()
         {
+            Debug.Log("Disable");
             //return;
             if (m_ReflectionTexture)
             {

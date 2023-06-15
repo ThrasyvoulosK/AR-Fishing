@@ -43,7 +43,7 @@ public class FishScript : MonoBehaviour
 
     IEnumerator RandomFish()
     {
-        Debug.Log("Starting Coroutine");
+        //Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(1f);
         float chance = Random.Range(0f, 1f);
 
@@ -73,8 +73,10 @@ public class FishScript : MonoBehaviour
         //choose which fish to catch
         float fishGOChance = Random.Range(1, fish.Count);
         int fishSelected = (int)fishGOChance;
-        Debug.Log("Fish Chosen:" + fishSelected);
+        //Debug.Log("Fish Chosen:" + fishSelected);
         Instantiate(fish[fishSelected], transform);
+
+        Handheld.Vibrate();
     }
 
     public void Reel()
@@ -98,8 +100,8 @@ public class FishScript : MonoBehaviour
     {
         if(transform.childCount>0)
         {
-            Debug.Log("We've got a fish!");
-            Debug.Log(castScript.fishReset+" " + sphereScript.isCastedCorrectly +" "+ sphereScript.sphereInPlace +" " +fishWait);
+            //Debug.Log("We've got a fish!");
+            //Debug.Log(castScript.fishReset+" " + sphereScript.isCastedCorrectly +" "+ sphereScript.sphereInPlace +" " +fishWait);
             //falsify all booleans
 
             //castScript.fishReset = false;
