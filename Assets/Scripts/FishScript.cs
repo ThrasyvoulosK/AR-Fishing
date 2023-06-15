@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishScript : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class FishScript : MonoBehaviour
     CastScript castScript;
     public bool fishWait = false;
     float fishChance = 0.2f;
+
+    [SerializeField]
+    Button reelButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,7 @@ public class FishScript : MonoBehaviour
         else
         {
             Debug.Log("Fish Caught!");
+            reelButton.interactable = true;
             //StopAllCoroutines();
             StopCoroutine(RandomFish());
 

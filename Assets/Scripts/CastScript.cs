@@ -10,6 +10,7 @@ public class CastScript : MonoBehaviour
 
     SphereScript sphereScript;
     Button castButton;
+    Button reelButton;
 
     [SerializeField]
     Material material;
@@ -21,21 +22,28 @@ public class CastScript : MonoBehaviour
         sphereScript = GetComponentInChildren<SphereScript>();
 
         castButton = GameObject.Find("Canvas").transform.Find("CastButton").GetComponent<Button>();
+        reelButton = GameObject.Find("Canvas").transform.Find("ReelButton").GetComponent<Button>();
+
+        //allow cast button only on idle rod
+        castButton.interactable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (checkCast() == false)
-            castButton.interactable = false;
+        /*if (checkCast() == false)
+        {
+            if(castButton.interactable==true)
+                castButton.interactable = false;
+        }
         else
-            castButton.interactable = true;
+            castButton.interactable = true;*/
 
         StopAnimation();
         ResetAnimation(fishReset);
     }
 
-    bool checkCast()
+    bool CheckCastRotation()
     {
         if (gameObject.transform.parent.rotation.x >= 0.1f||gameObject.transform.parent.rotation.x <= -0.1f)
             return false;
@@ -61,6 +69,15 @@ public class CastScript : MonoBehaviour
             {
                 //Debug.Log("IdleRod");
                 //fishReset = false;
+
+                //reeling not needed
+                reelButton.interactable = false;
+                //allow rod to be cast
+                if (CheckCastRotation() == false)
+                    castButton.interactable = false;
+                else
+                    castButton.interactable = true;
+
                 if (transform.Find("Sphere").transform.Find("Fish").childCount > 0)
                 {
                     Debug.Log("Ending Condition");
@@ -82,11 +99,8 @@ public class CastScript : MonoBehaviour
                 //sphereScript.isCastedCorrectly = false;
             }*/
             else if(animatorClipInfo[0].clip.name == "PullRod")
-            {
-                if (transform.Find("Sphere").transform.Find("Fish").childCount > 0)
-                {
-                    //StartCoroutine(Invisivise());                    
-                }
+            {                
+                castButton.interactable = false;
             }
             else
                 Debug.Log(animatorClipInfo[0].clip.name);
@@ -122,7 +136,7 @@ public class CastScript : MonoBehaviour
             Debug.Log("No fish");
             yield return null;
         }
-        Debug.Log("Invisivise "+ transform.Find("Sphere").transform.Find("Fish").childCount);
+        //Debug.Log("Invisivise "+ transform.Find("Sphere").transform.Find("Fish").childCount);
         GameObject fishy = transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject;
         //Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
         Renderer renderer = fishy.GetComponent<Renderer>();
@@ -137,11 +151,11 @@ public class CastScript : MonoBehaviour
         //for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
         for (float alpha = 1f; alpha >= 0; alpha -= 0.05f)
         {
-            Debug.Log("Alpha " + alpha);
+            //Debug.Log("Alpha " + alpha);
             color.a = alpha;
             if (fishy == null)
             {
-                Debug.Log(fishy == null);
+                //Debug.Log(fishy == null);
                 yield return null;
             }
             else
