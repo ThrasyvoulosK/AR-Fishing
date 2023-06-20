@@ -43,9 +43,11 @@ public class CastScript : MonoBehaviour
         ResetAnimation(fishReset);
     }
 
+    //Check the camera Rotation along the x and z axes for proper casting
     bool CheckCastRotation()
     {
-        if (gameObject.transform.parent.rotation.x >= 0.1f||gameObject.transform.parent.rotation.x <= -0.1f)
+        Quaternion cameraRotation = gameObject.transform.parent.rotation;
+        if (cameraRotation.x >= 0.1f||cameraRotation.x <= -0.1f|| cameraRotation.z >= 0.1f || cameraRotation.z <= -0.1f)
             return false;
         return true;
     }
