@@ -1,8 +1,10 @@
 # AR Fishing Game
  <details>
- <summary>Project Info:</summary>
- Fishing Game in Augmented Reality made using Unity and Vuforia.
- Simply sit down, relax and start fishing!
+ <summary><b>Project Info:</b></summary>
+  <p></p>
+  <b>Description</b>
+ <p>Fishing Game in Augmented Reality made using Unity and Vuforia.<br>
+ Simply sit down, relax and start fishing!</p>
  <b>Features:</b>
  <ul>
  <li>Breathtaking scenery!</li>
