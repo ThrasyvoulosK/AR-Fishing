@@ -44,6 +44,12 @@ public class FishScript : MonoBehaviour
     IEnumerator RandomFish()
     {
         //Debug.Log("Starting Coroutine");
+
+        if(transform.childCount>0)
+        {
+            Debug.Log("Error, Fish already caught!");
+            yield return null;
+        }
         yield return new WaitForSeconds(1f);
         float chance = Random.Range(0f, 1f);
 

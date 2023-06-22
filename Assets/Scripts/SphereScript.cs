@@ -9,12 +9,16 @@ public class SphereScript : MonoBehaviour
     public float heightFactor=0.1f;
     public bool isCastedCorrectly=false;
     public bool sphereInPlace = false;
+
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
          waterHeight = 2f;
         heightFactor = 0.1f;
         isCastedCorrectly = false;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -34,7 +38,10 @@ public class SphereScript : MonoBehaviour
                 //Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
                 gameObject.transform.Translate(-transform.up * Time.deltaTime);
                 sphereInPlace = false;
-            }
+
+            //Debug.Log("Don't use Gravity");
+            rb.useGravity = false;
+        }
             else if (isCastedCorrectly)
             {
                 if ((gameObject.transform.position.y <= (waterHeight + heightFactor)) && (gameObject.transform.position.y >= (waterHeight - heightFactor)))
@@ -42,8 +49,16 @@ public class SphereScript : MonoBehaviour
                     //Debug.Log("Stable Sphere");
                     //isCastedCorrectly = false;
                     sphereInPlace = true;
+
+                    //Debug.Log("Don't use Gravity");
+                    rb.useGravity = false;
                 }
             }
+            else if(isCastedCorrectly==false)
+        {
+            sphereInPlace = false;
+            transform.position = Vector3.MoveTowards(transform.position, transform.parent.Find("RodEnd").transform.position, Time.deltaTime);
+        }
         
 
         //Debug.Log("tp"+transform.position);

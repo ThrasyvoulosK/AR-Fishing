@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155826202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.293, y: 0.003, z: 1.499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -824,6 +824,8 @@ Animation:
   - {fileID: 7400000, guid: eba75613d54daea41881bde8d3bae60d, type: 2}
   - {fileID: 7400000, guid: 4a8105cf15e8adf46afa6144bc1893f8, type: 2}
   - {fileID: 7400000, guid: 789f5b763b7a15b48a8b0db448a48cbc, type: 2}
+  - {fileID: 7400000, guid: 38efa07fed3cdad42bf2c294679f993b, type: 2}
+  - {fileID: 7400000, guid: f9c6b6e1be6ab3a45890ccca58810812, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -843,6 +845,22 @@ MonoBehaviour:
   animator: {fileID: 0}
   fishReset: 0
   material: {fileID: 2100000, guid: 23f6c5064b7ce7d4b8e9ae350388d2dc, type: 2}
+--- !u!54 &691139429
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691139421}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1866,7 @@ GameObject:
   - component: {fileID: 1806438517}
   - component: {fileID: 1806438516}
   - component: {fileID: 1806438519}
+  - component: {fileID: 1806438520}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1950,6 +1969,22 @@ MonoBehaviour:
   heightFactor: 1.1
   isCastedCorrectly: 0
   sphereInPlace: 0
+--- !u!54 &1806438520
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806438514}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &2061337923
 GameObject:
   m_ObjectHideFlags: 0
