@@ -35,16 +35,20 @@ public class SphereScript : MonoBehaviour
         //rb.AddForce(transform.forward*force);
 
         //if(transform==origin)
-        if (shootBool)
-        {
-            //ShootSphere();
-        }
+        
         //Debug.Log(force);
         //rb.AddForce(0,force,0);
         //Debug.Log("tp" + gameObject.transform.position.y);
         if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor)))
         {
             Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
+
+            //if (shootBool)
+            if(transform.localPosition.y<0.01&& transform.localPosition.z < 1.5)
+            {
+                ShootSphere();
+                shootBool = false;
+            }
             //gameObject.transform.Translate(transform.up * Time.deltaTime);
             //Debug.Log(force);
             rb.AddForce(0,force,0);
@@ -90,7 +94,7 @@ public class SphereScript : MonoBehaviour
     {
         Debug.Log("Shoot Sphere");
         //rb.AddRelativeForce(new Vector3(0, force, 0));
-        //rb.AddRelativeForce(new Vector3(0, 0, force));
+        rb.AddRelativeForce(new Vector3(0, 0, force*15));
         //rb.AddRelativeForce(transform.forward * force);
         //rb.AddRelativeForce(transform.position.z*force);
         shootBool = false;

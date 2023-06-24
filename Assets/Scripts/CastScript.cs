@@ -75,7 +75,8 @@ public class CastScript : MonoBehaviour
                 //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(new Vector3(0,ObjVelocity.y*100,ObjVelocity.z*100));//transform.forward* 
                 //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(transform.forward*2000);//transform.forward* 
                 //transform.Find("Sphere").GetComponent<Rigidbody>().velocity = ObjVelocity;
-                sphereScript.shootBool = true;
+                //Debug.Log("ShootBool");
+                //sphereScript.shootBool = true;
             }
             else if(animatorClipInfo[0].clip.name=="PushRod 1")
             {
@@ -89,6 +90,9 @@ public class CastScript : MonoBehaviour
                 Debug.Log("PushRod angular velocity: "+rb.angularVelocity);
                 Debug.Log("prevPoss "+PrevPos + "\n" +"NewPos "+ NewPos + "\n ObjVelocity" + ObjVelocity);
                 Debug.Log(ObjVelocity.magnitude);
+
+                Debug.Log("ShootBool");
+                sphereScript.shootBool = true;
             }
             else if (animatorClipInfo[0].clip.name == "IdleRod")
             {
