@@ -64,7 +64,7 @@ public class CastScript : MonoBehaviour
             //Debug.Log(animatorClipInfo[0].clip.name);
             if (animatorClipInfo[0].clip.name == "PushRodEnd 1")//&animator.enabled==true)
             {
-                Debug.Log("PushRodEnd");
+                //Debug.Log("PushRodEnd");
                 animator.StopPlayback();
                 animator.enabled = false;
 
@@ -73,8 +73,9 @@ public class CastScript : MonoBehaviour
                 //Debug.Log("Use Gravity");
                 transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;
                 //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(new Vector3(0,ObjVelocity.y*100,ObjVelocity.z*100));//transform.forward* 
-                //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(transform.up*20);//transform.forward* 
-                transform.Find("Sphere").GetComponent<Rigidbody>().velocity = ObjVelocity;
+                //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(transform.forward*2000);//transform.forward* 
+                //transform.Find("Sphere").GetComponent<Rigidbody>().velocity = ObjVelocity;
+                sphereScript.shootBool = true;
             }
             else if(animatorClipInfo[0].clip.name=="PushRod 1")
             {
@@ -91,7 +92,7 @@ public class CastScript : MonoBehaviour
             }
             else if (animatorClipInfo[0].clip.name == "IdleRod")
             {
-                Debug.Log("IdleRod");
+                //Debug.Log("IdleRod");
                 //fishReset = false;
 
                 //reeling not needed
