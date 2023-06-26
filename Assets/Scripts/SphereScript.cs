@@ -32,16 +32,15 @@ public class SphereScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.AddForce(transform.forward*force);
 
         //if(transform==origin)
         
         //Debug.Log(force);
-        //rb.AddForce(0,force,0);
         //Debug.Log("tp" + gameObject.transform.position.y);
+
         if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor)))
         {
-            Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
+            //Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
 
             //if (shootBool)
             if(transform.localPosition.y<0.01&& transform.localPosition.z < 1.5)
@@ -69,7 +68,7 @@ public class SphereScript : MonoBehaviour
         {
             if ((gameObject.transform.position.y <= (waterHeight + heightFactor)) && (gameObject.transform.position.y >= (waterHeight - heightFactor)))
             {
-                Debug.Log("Stable Sphere");
+                //Debug.Log("Stable Sphere");
                 //isCastedCorrectly = false;
                 sphereInPlace = true;
 
@@ -85,16 +84,19 @@ public class SphereScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.Find("RodEnd").transform.position, Time.deltaTime);
         }
 
-        Debug.Log("tp"+transform.position);
-        Debug.Log("tpl"+transform.localPosition);
+        //Debug.Log("tp"+transform.position);
+        //Debug.Log("tpl"+transform.localPosition);
         
     }
 
     void ShootSphere()
     {
-        Debug.Log("Shoot Sphere");
+        float shootFactor = 15;
+        float shootForce = shootFactor * force;
+
+        Debug.Log("Shoot Sphere with a force of: "+shootForce);
         //rb.AddRelativeForce(new Vector3(0, force, 0));
-        rb.AddRelativeForce(new Vector3(0, 0, force*15));
+        rb.AddRelativeForce(new Vector3(0, 0, shootForce));
         //rb.AddRelativeForce(transform.forward * force);
         //rb.AddRelativeForce(transform.position.z*force);
         shootBool = false;

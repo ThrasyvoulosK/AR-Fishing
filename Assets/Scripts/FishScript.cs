@@ -99,33 +99,9 @@ public class FishScript : MonoBehaviour
         rod.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
         //rod.gameObject.GetComponent<Animation>().Play("ReelRod");
 
-        FishingRestart();
-    }
-
-    void FishingRestart()
-    {
-        if(transform.childCount>0)
-        {
-            //Debug.Log("We've got a fish!");
-            //Debug.Log(castScript.fishReset+" " + sphereScript.isCastedCorrectly +" "+ sphereScript.sphereInPlace +" " +fishWait);
-            //falsify all booleans
-
-            //castScript.fishReset = false;
-            //castScript.fishReset = true;
-            //castScript.animator.enabled = true;
-            //castScript.animator.Play("IdleRod");
-
+        //Fishing Restart
+        if (transform.childCount > 0)
             sphereScript.isCastedCorrectly = false;
-            //sphereScript.sphereInPlace = false;
-
-            //fishWait = false;
-        }
     }
 
-    /*public void FishDisappear()
-    {
-        GameObject fishObject = gameObject.transform.GetChild(0).gameObject;
-
-        //fishObject.GetComponent<>
-    }*/
 }

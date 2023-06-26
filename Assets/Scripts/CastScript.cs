@@ -18,6 +18,7 @@ public class CastScript : MonoBehaviour
     Vector3 PrevPos;
     Vector3 NewPos;
     Vector3 ObjVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +39,7 @@ public class CastScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*NewPos = transform.position;  // each frame track the new position
-        ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time
-        PrevPos = NewPos;  // update position for next frame calculation*/
-
-        StopAnimation();
+        CheckAnimation();
         ResetAnimation(fishReset);
     }
 
@@ -55,14 +52,18 @@ public class CastScript : MonoBehaviour
         return true;
     }
 
-    void StopAnimation()
+    //Check the animation state of the rod in the animator and act accordingly
+    void CheckAnimation()
     {
         AnimatorClipInfo[] animatorClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        string clipName = null;// animatorClipInfo[0].clip.name;
 
         if (animatorClipInfo.Length > 0)
         {
-            //Debug.Log(animatorClipInfo[0].clip.name);
-            if (animatorClipInfo[0].clip.name == "PushRodEnd 1")//&animator.enabled==true)
+            clipName =  animatorClipInfo[0].clip.name;
+            //Debug.Log(clipName);
+
+            if (clipName == "PushRodEnd 1")//&animator.enabled==true)
             {
                 //Debug.Log("PushRodEnd");
                 animator.StopPlayback();
@@ -71,30 +72,25 @@ public class CastScript : MonoBehaviour
                 sphereScript.isCastedCorrectly = true;
 
                 //Debug.Log("Use Gravity");
-                transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;
-                //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(new Vector3(0,ObjVelocity.y*100,ObjVelocity.z*100));//transform.forward* 
-                //transform.Find("Sphere").GetComponent<Rigidbody>().AddForce(transform.forward*2000);//transform.forward* 
-                //transform.Find("Sphere").GetComponent<Rigidbody>().velocity = ObjVelocity;
-                //Debug.Log("ShootBool");
-                //sphereScript.shootBool = true;
+                transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;                
             }
-            else if(animatorClipInfo[0].clip.name=="PushRod 1")
+            else if(clipName == "PushRod 1")
             {
                 NewPos = transform.position;  // each frame track the new position
                 ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time
                 PrevPos = NewPos;  // update position for next frame calculation
 
                 Rigidbody rb = GetComponent<Rigidbody>();
-                Debug.Log("PushRod animation speed: "+animatorClipInfo[0].clip.averageSpeed);
-                Debug.Log("PushRod rb speed: "+rb.velocity);
-                Debug.Log("PushRod angular velocity: "+rb.angularVelocity);
-                Debug.Log("prevPoss "+PrevPos + "\n" +"NewPos "+ NewPos + "\n ObjVelocity" + ObjVelocity);
-                Debug.Log(ObjVelocity.magnitude);
+                //Debug.Log("PushRod animation speed: "+animatorClipInfo[0].clip.averageSpeed);
+                //Debug.Log("PushRod rb speed: "+rb.velocity);
+                //Debug.Log("PushRod angular velocity: "+rb.angularVelocity);
+                //Debug.Log("prevPoss "+PrevPos + "\n" +"NewPos "+ NewPos + "\n ObjVelocity" + ObjVelocity);
+                //Debug.Log(ObjVelocity.magnitude);
 
-                Debug.Log("ShootBool");
+                //Debug.Log("ShootBool");
                 sphereScript.shootBool = true;
             }
-            else if (animatorClipInfo[0].clip.name == "IdleRod")
+            else if (clipName == "IdleRod")
             {
                 //Debug.Log("IdleRod");
                 //fishReset = false;
@@ -114,34 +110,26 @@ public class CastScript : MonoBehaviour
                     sphereScript.isCastedCorrectly = false;
                     fishReset = false;
 
-                    //Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
-
-                    //transform.Find("Sphere").transform.position = Vector3.MoveTowards(transform.Find("Sphere").transform.position, transform.Find("RodEnd").transform.position, Time.deltaTime);
-                    //transform.Find("Sphere").transform.position = Vector3.MoveTowards(transform.Find("Sphere").transform.position, transform.Find("RodEnd").transform.position, Time.deltaTime);
                     StartCoroutine(Invisivise());
 
                 }
                 else
                 {
-                    /*if (transform.Find("Sphere").transform.Find("Fish").childCount > 1)
-                    {
-                        fishReset = true;
-                    }*/
                     StopCoroutine(Invisivise());
                 }
             }
-            /*else if (animatorClipInfo[0].clip.name == "ReelRodEnd")
+            /*else if (clipName == "ReelRodEnd")
             {
                 Debug.Log("Reeling");
                 //animator.enabled = true;
                 //sphereScript.isCastedCorrectly = false;
             }*/
-            else if(animatorClipInfo[0].clip.name == "PullRod")
+            else if (clipName == "PullRod")
             {                
                 castButton.interactable = false;
             }
             else
-                Debug.Log("Other animation name: "+animatorClipInfo[0].clip.name);
+                Debug.Log("Other animation name: "+ clipName);
         }
         else
         {
@@ -162,11 +150,6 @@ public class CastScript : MonoBehaviour
             animator.enabled = true;
     }
 
-    /*public void ToggleFishReset()
-    {
-        fishReset=!fishReset;
-    }*/
-
     IEnumerator Invisivise()
     {
         if (transform.Find("Sphere").transform.Find("Fish").childCount <= 0)
@@ -176,21 +159,16 @@ public class CastScript : MonoBehaviour
         }
         //Debug.Log("Invisivise "+ transform.Find("Sphere").transform.Find("Fish").childCount);
         GameObject fishy = transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject;
-        //Destroy(transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject);
+
         Renderer renderer = fishy.GetComponent<Renderer>();
-        //renderer.material.renderingMode
         renderer.material = material;
         Color color = renderer.material.color;
-        /*if(color.a==0)
-        {
-            Destroy(fishy);
-            yield return null;
-        }*/
-        //for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
+
         for (float alpha = 1f; alpha >= 0; alpha -= 0.05f)
         {
             //Debug.Log("Alpha " + alpha);
             color.a = alpha;
+
             if (fishy == null)
             {
                 //Debug.Log(fishy == null);
@@ -198,15 +176,16 @@ public class CastScript : MonoBehaviour
             }
             else
                 renderer.material.color = color;
+
+            //destroy the fish created if it is nearly invisible
             if(color.a<=0.08)
             {
                 Destroy(fishy);
                 StopAllCoroutines();
                 yield return null;
             }
-            //renderer.material.color = color;
+
             yield return null;
         }
-        //renderer.material.color = color;
     }
 }
