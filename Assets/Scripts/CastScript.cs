@@ -63,16 +63,21 @@ public class CastScript : MonoBehaviour
             clipName =  animatorClipInfo[0].clip.name;
             //Debug.Log(clipName);
 
-            if (clipName == "PushRodEnd 1")//&animator.enabled==true)
+            if (clipName == "PushRodEnd 2")//&animator.enabled==true)
             {
                 //Debug.Log("PushRodEnd");
-                animator.StopPlayback();
-                animator.enabled = false;
+                //animator.StopPlayback();
+                //animator.enabled = false;
 
-                sphereScript.isCastedCorrectly = true;
+                ////sphereScript.isCastedCorrectly = true;
 
                 //Debug.Log("Use Gravity");
-                transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;                
+                ////transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;                
+            }
+            else if (clipName == "PushRodEnd 1")
+            {
+                animator.StopPlayback();
+                animator.enabled = false;
             }
             else if(clipName == "PushRod 1")
             {
@@ -80,12 +85,16 @@ public class CastScript : MonoBehaviour
                 ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time
                 PrevPos = NewPos;  // update position for next frame calculation
 
-                Rigidbody rb = GetComponent<Rigidbody>();
+                //Rigidbody rb = GetComponent<Rigidbody>();
                 //Debug.Log("PushRod animation speed: "+animatorClipInfo[0].clip.averageSpeed);
                 //Debug.Log("PushRod rb speed: "+rb.velocity);
                 //Debug.Log("PushRod angular velocity: "+rb.angularVelocity);
                 //Debug.Log("prevPoss "+PrevPos + "\n" +"NewPos "+ NewPos + "\n ObjVelocity" + ObjVelocity);
                 //Debug.Log(ObjVelocity.magnitude);
+
+                //
+                sphereScript.isCastedCorrectly = true;
+                transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;
 
                 //Debug.Log("ShootBool");
                 sphereScript.shootBool = true;
