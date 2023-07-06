@@ -6,7 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu]
 public class FishSO : ScriptableObject
 {
-    Image photo;
-    string description;
-    int weight;
+    //public string name;
+    public Image photo;
+    public string description;
+    public int weight;
 }
