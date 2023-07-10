@@ -11,6 +11,8 @@ public class FishScript : MonoBehaviour
     [SerializeField]
     List<FishSO> fishSOs;
 
+    Dictionary<GameObject,FishSO> fishDB;
+
     SphereScript sphereScript;
     CastScript castScript;
     public bool fishWait = false;
@@ -25,7 +27,8 @@ public class FishScript : MonoBehaviour
 
         castScript = sphereScript.gameObject.GetComponentInParent<CastScript>();
 
-        Debug.Log(castScript.fishReset + " " + sphereScript.isCastedCorrectly + " " + sphereScript.sphereInPlace + " " + fishWait);
+        //Debug.Log(castScript.fishReset + " " + sphereScript.isCastedCorrectly + " " + sphereScript.sphereInPlace + " " + fishWait);
+        InitialiseDictionary();
     }
 
     // Update is called once per frame
@@ -105,6 +108,15 @@ public class FishScript : MonoBehaviour
         //Fishing Restart
         if (transform.childCount > 0)
             sphereScript.isCastedCorrectly = false;
+    }
+
+    void InitialiseDictionary()
+    {
+        for(int i=0;i<fish.Count;i++)
+        {
+            fishDB.Add(fish[i], fishSOs[i]);
+            //Debug.Log(fishDB.);
+        }
     }
 
 }
