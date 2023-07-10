@@ -21,6 +21,8 @@ public class CircleMouse : MonoBehaviour
     public List<Vector3> checkPoints;
     public List<bool> checkPointsPassed;
 
+    int numberOfCircles = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,9 +90,7 @@ public class CircleMouse : MonoBehaviour
         checkPoints.Add(new Vector3(parX, parY-Radius, 0));
         checkPoints.Add(new Vector3(parX-Radius, parY, 0));
 
-        //initialise passed checkpoints as false
-        for (int i=0;i<4;i++)
-            checkPointsPassed.Add(false);
+        ResetCheckpoints();
     }
     private void CheckPoint()
     {
@@ -117,5 +117,25 @@ public class CircleMouse : MonoBehaviour
                 return;
         }
         Debug.Log("Circle Completed!");
+        ResetCircle();
+    }
+
+    
+
+    private void ResetCheckpoints()
+    {
+        checkPointsPassed.Clear();
+
+        //initialise passed checkpoints as false
+        for (int i = 0; i < 4; i++)
+            checkPointsPassed.Add(false);
+    }
+    
+    private void ResetCircle()
+    {
+        ResetCheckpoints();
+
+        numberOfCircles++;
+        Debug.Log("Number Of Circles " + numberOfCircles);
     }
 }
