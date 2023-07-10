@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FishSO : ScriptableObject
 {
     //public string name;
-    public Image photo;
+    public Sprite photo;
     public string description;
     public int weight;
 }

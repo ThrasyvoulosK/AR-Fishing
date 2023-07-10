@@ -173,6 +173,12 @@ MonoBehaviour:
   - {fileID: 2206852426022253465, guid: de500f6b90f89bc4c87a6585b2dea01a, type: 3}
   - {fileID: 1937588542411740048, guid: a05072560c3476b4cb8dddf22f697392, type: 3}
   - {fileID: 5925960515861282153, guid: 2fb93ff3c1250a74ca5f53a6bc162675, type: 3}
+  fishSOs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fishWait: 0
   reelButton: {fileID: 802606013}
 --- !u!1 &149143060
@@ -755,6 +761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 125
   cameraMain: {fileID: 205767845}
+  checkPoints: []
+  checkPointsPassed: 
 --- !u!1 &479019476
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ public class FishScript : MonoBehaviour
     [SerializeField]
     List<GameObject> fish;
 
+    [SerializeField]
+    List<FishSO> fishSOs;
+
     SphereScript sphereScript;
     CastScript castScript;
     public bool fishWait = false;
