@@ -80,12 +80,18 @@ public class CircleMouse : MonoBehaviour
                 if (fishScript.transform.childCount > 0)
                 {
                     //Debug.Log("Circles/Weight in fish " + fishScript.fishDB[fishScript.currentFish].weight);
-                    if(numberOfCircles>= fishScript.fishDB[fishScript.currentFish].weight)
+                    if (numberOfCircles >= fishScript.fishDB[fishScript.currentFish].weight)
                     {
                         //reel should finish
                         Debug.Log("Enough Circles Completed!");
+                        fishScript.Reel();
+
+                        //reset number of circles
+                        numberOfCircles = 0;
                     }
                 }
+                else//do not count circles if there's no fish!
+                    numberOfCircles = 0;
             }
         }
     }

@@ -18,8 +18,8 @@ public class FishScript : MonoBehaviour
     public bool fishWait = false;
     float fishChance = 0.2f;
 
-    [SerializeField]
-    Button reelButton;
+    //[SerializeField]
+    //Button reelButton;
 
     public GameObject currentFish;
     // Start is called before the first frame update
@@ -71,7 +71,7 @@ public class FishScript : MonoBehaviour
         else
         {
             Debug.Log("Fish Caught!");
-            reelButton.interactable = true;
+            //reelButton.interactable = true;
             //StopAllCoroutines();
             StopCoroutine(RandomFish());
 
