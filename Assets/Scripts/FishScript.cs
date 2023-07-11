@@ -11,7 +11,7 @@ public class FishScript : MonoBehaviour
     [SerializeField]
     List<FishSO> fishSOs;
 
-    Dictionary<GameObject,FishSO> fishDB;
+    public Dictionary<GameObject,FishSO> fishDB=new Dictionary<GameObject, FishSO>();
 
     SphereScript sphereScript;
     CastScript castScript;
@@ -20,6 +20,8 @@ public class FishScript : MonoBehaviour
 
     [SerializeField]
     Button reelButton;
+
+    public GameObject currentFish;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ public class FishScript : MonoBehaviour
 
         //Debug.Log(castScript.fishReset + " " + sphereScript.isCastedCorrectly + " " + sphereScript.sphereInPlace + " " + fishWait);
         InitialiseDictionary();
+
+        currentFish = null;
     }
 
     // Update is called once per frame
@@ -88,6 +92,8 @@ public class FishScript : MonoBehaviour
         //Debug.Log("Fish Chosen:" + fishSelected);
         Instantiate(fish[fishSelected], transform);
 
+        currentFish = fish[fishSelected];
+
         Handheld.Vibrate();
     }
 
@@ -114,8 +120,13 @@ public class FishScript : MonoBehaviour
     {
         for(int i=0;i<fish.Count;i++)
         {
+            //Debug.Log(i);
+            //Debug.Log(fish.Count);
+            //Debug.Log(fishDB.Count);
             fishDB.Add(fish[i], fishSOs[i]);
-            //Debug.Log(fishDB.);
+            //Debug.Log(fishDB[fish[i]].weight);
+            Debug.Log(fish[i].name);
+            Debug.Log(fishSOs[i].weight);
         }
     }
 

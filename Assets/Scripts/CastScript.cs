@@ -190,6 +190,7 @@ public class CastScript : MonoBehaviour
             if(color.a<=0.08)
             {
                 Destroy(fishy);
+                transform.Find("Sphere").transform.Find("Fish").GetComponent<FishScript>().currentFish = null;
                 StopAllCoroutines();
                 yield return null;
             }

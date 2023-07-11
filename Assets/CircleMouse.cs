@@ -23,6 +23,8 @@ public class CircleMouse : MonoBehaviour
 
     int numberOfCircles = 0;
 
+    FishScript fishScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class CircleMouse : MonoBehaviour
 
         //Radius = 125f;
         GenerateCheckPoints();
+
+        fishScript = FindObjectOfType<FishScript>();
     }
 
     
@@ -72,6 +76,16 @@ public class CircleMouse : MonoBehaviour
                 CheckPoint();
                 //Check if a circle has been completed
                 CheckCircle();
+
+                if (fishScript.transform.childCount > 0)
+                {
+                    //Debug.Log("Circles/Weight in fish " + fishScript.fishDB[fishScript.currentFish].weight);
+                    if(numberOfCircles>= fishScript.fishDB[fishScript.currentFish].weight)
+                    {
+                        //reel should finish
+                        Debug.Log("Enough Circles Completed!");
+                    }
+                }
             }
         }
     }

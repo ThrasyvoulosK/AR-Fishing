@@ -174,13 +174,14 @@ MonoBehaviour:
   - {fileID: 1937588542411740048, guid: a05072560c3476b4cb8dddf22f697392, type: 3}
   - {fileID: 5925960515861282153, guid: 2fb93ff3c1250a74ca5f53a6bc162675, type: 3}
   fishSOs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 3c49f71f6ad07164c8adbd59c1770b0e, type: 2}
+  - {fileID: 11400000, guid: 22f75fabc763ff84d900d70696fc2a94, type: 2}
+  - {fileID: 11400000, guid: 61503bddea94ee148901bb51558747f8, type: 2}
+  - {fileID: 11400000, guid: 755c9f32e99e9dc418c506df2298d03e, type: 2}
+  - {fileID: 11400000, guid: 5ea36f533f8f1ad4e968dc1be13f6d9a, type: 2}
   fishWait: 0
   reelButton: {fileID: 802606013}
+  currentFish: {fileID: 0}
 --- !u!1 &149143060
 GameObject:
   m_ObjectHideFlags: 0
