@@ -180,7 +180,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 755c9f32e99e9dc418c506df2298d03e, type: 2}
   - {fileID: 11400000, guid: 5ea36f533f8f1ad4e968dc1be13f6d9a, type: 2}
   fishWait: 0
-  reelButton: {fileID: 802606013}
   currentFish: {fileID: 0}
 --- !u!1 &149143060
 GameObject:
@@ -1694,15 +1693,27 @@ MonoBehaviour:
           m_StringArgument: Trigger
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1882297854}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1882297858}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1882297858}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -2499,6 +2510,7 @@ GameObject:
   - component: {fileID: 1882297855}
   - component: {fileID: 1882297857}
   - component: {fileID: 1882297856}
+  - component: {fileID: 1882297858}
   m_Layer: 5
   m_Name: Wheel
   m_TagString: Untagged
@@ -2565,6 +2577,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882297854}
   m_CullTransparentMesh: 1
+--- !u!225 &1882297858
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882297854}
+  m_Enabled: 1
+  m_Alpha: 0.1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2061337923
 GameObject:
   m_ObjectHideFlags: 0

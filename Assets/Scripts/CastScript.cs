@@ -11,6 +11,7 @@ public class CastScript : MonoBehaviour
     SphereScript sphereScript;
     Button castButton;
     //Button reelButton;
+    CanvasGroup reelWheel;
 
     [SerializeField]
     Material material;
@@ -28,6 +29,7 @@ public class CastScript : MonoBehaviour
 
         castButton = GameObject.Find("Canvas").transform.Find("CastButton").GetComponent<Button>();
         //reelButton = GameObject.Find("Canvas").transform.Find("ReelButton").GetComponent<Button>();
+        reelWheel = GameObject.Find("Canvas").transform.Find("Wheel").GetComponent<CanvasGroup>();
 
         //allow cast button only on idle rod
         castButton.interactable = false;
@@ -106,6 +108,8 @@ public class CastScript : MonoBehaviour
 
                 //reeling not needed
                 ////reelButton.interactable = false;
+                reelWheel.interactable = false;
+                reelWheel.alpha = 0.1f;
 
                 //allow rod to be cast
                 if (CheckCastRotation() == false)

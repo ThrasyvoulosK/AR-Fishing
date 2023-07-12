@@ -20,6 +20,7 @@ public class FishScript : MonoBehaviour
 
     //[SerializeField]
     //Button reelButton;
+    CanvasGroup reelWheel;
 
     public GameObject currentFish;
     // Start is called before the first frame update
@@ -33,6 +34,8 @@ public class FishScript : MonoBehaviour
         InitialiseDictionary();
 
         currentFish = null;
+
+        reelWheel = GameObject.Find("Canvas").transform.Find("Wheel").GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
@@ -71,7 +74,11 @@ public class FishScript : MonoBehaviour
         else
         {
             Debug.Log("Fish Caught!");
+
             //reelButton.interactable = true;
+            reelWheel.interactable=true;
+            reelWheel.alpha=1f;
+
             //StopAllCoroutines();
             StopCoroutine(RandomFish());
 
