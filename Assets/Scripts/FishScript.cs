@@ -121,6 +121,13 @@ public class FishScript : MonoBehaviour
         //Fishing Restart
         if (transform.childCount > 0)
             sphereScript.isCastedCorrectly = false;
+
+        //update score
+        int scoreFactor = fishDB[currentFish].weight * 100;
+        Score score = FindObjectOfType<Score>();
+        score.SetAddInt(score.scoreName, scoreFactor, score.score);
+        score.score += scoreFactor;
+        Debug.Log("Current Score is: " + score.score);
     }
 
     void InitialiseDictionary()
