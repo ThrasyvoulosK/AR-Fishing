@@ -79,12 +79,26 @@ public class FishScript : MonoBehaviour
             reelWheel.interactable=true;
             reelWheel.alpha=1f;
 
+            //start playing 'reel' animation
+            Transform rod = transform.parent.transform.parent;
+
+            ////play reel animation
+            //CastScript castScript = rod.GetComponent<CastScript>();
+            //castScript.fishReset = true;
+
+            //rod.gameObject.GetComponent<Animator>().enabled = true;
+
+            //rod.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
+            //rod.gameObject.GetComponent<Animation>().Play("ReelRod");
+
             //StopAllCoroutines();
             StopCoroutine(RandomFish());
 
             CatchFish();
 
             //Reel();
+
+            //
         }
 
         yield return new WaitForSeconds(1f);
@@ -109,14 +123,16 @@ public class FishScript : MonoBehaviour
         Debug.Log("Reel");
         Transform rod = transform.parent.transform.parent;
 
-        //play reel animation
+        ////play reel animation
         CastScript castScript = rod.GetComponent<CastScript>();
         castScript.fishReset = true;
 
-        rod.gameObject.GetComponent<Animator>().enabled = true;
+        //rod.gameObject.GetComponent<Animator>().enabled = true;
 
-        rod.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
-        //rod.gameObject.GetComponent<Animation>().Play("ReelRod");
+        //rod.gameObject.GetComponent<Animator>().SetTrigger("ReelTrigger");
+        rod.gameObject.GetComponent<Animator>().SetTrigger("ReelEnd");
+        rod.gameObject.GetComponent<Animator>().ResetTrigger("ReelTrigger");
+        ////rod.gameObject.GetComponent<Animation>().Play("ReelRod");
 
         //Fishing Restart
         if (transform.childCount > 0)

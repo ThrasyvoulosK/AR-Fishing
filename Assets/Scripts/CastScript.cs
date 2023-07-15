@@ -63,23 +63,20 @@ public class CastScript : MonoBehaviour
         if (animatorClipInfo.Length > 0)
         {
             clipName =  animatorClipInfo[0].clip.name;
-            //Debug.Log(clipName);
+            Debug.Log(clipName);
 
-            if (clipName == "PushRodEnd 2")//&animator.enabled==true)
+            if (clipName == "PushRodEnd 1")
             {
-                //Debug.Log("PushRodEnd");
-                //animator.StopPlayback();
-                //animator.enabled = false;
-
-                ////sphereScript.isCastedCorrectly = true;
-
-                //Debug.Log("Use Gravity");
-                ////transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;                
-            }
-            else if (clipName == "PushRodEnd 1")
-            {
-                animator.StopPlayback();
-                animator.enabled = false;
+                if (transform.Find("Sphere").transform.Find("Fish").childCount < 1)
+                {
+                    //animator.StopPlayback();
+                    //animator.enabled = false;
+                }
+                else
+                {
+                    //animator.enabled = true;
+                    animator.SetTrigger("ReelTrigger");
+                }
             }
             else if(clipName == "PushRod 1")
             {
@@ -99,7 +96,8 @@ public class CastScript : MonoBehaviour
                 transform.Find("Sphere").GetComponent<Rigidbody>().useGravity = true;
 
                 //Debug.Log("ShootBool");
-                sphereScript.shootBool = true;
+                //if(sphereScript.shootBool==false)
+                    sphereScript.shootBool = true;
             }
             else if (clipName == "IdleRod")
             {
@@ -117,9 +115,17 @@ public class CastScript : MonoBehaviour
                 else
                     castButton.interactable = true;
 
-                if (transform.Find("Sphere").transform.Find("Fish").childCount == 1)
+                CircleMouse circleMouse = GameObject.Find("Canvas").transform.Find("Wheel").transform.Find("Handle").GetComponent<CircleMouse>();
+
+                if (transform.Find("Sphere").transform.Find("Fish").childCount == 1&&circleMouse.circlesCompleted==true)
                 {
                     Debug.Log("Ending Condition");
+
+                    //animator.Play("ReelRod");
+
+                    //reset circles completed
+                    circleMouse.circlesCompleted = false;
+
                     transform.Find("Sphere").transform.Find("Fish").GetComponent<FishScript>().fishWait = false;
                     sphereScript.isCastedCorrectly = false;
                     fishReset = false;
@@ -127,17 +133,28 @@ public class CastScript : MonoBehaviour
                     StartCoroutine(Invisivise());
 
                 }
-                else
+                else if (transform.Find("Sphere").transform.Find("Fish").childCount != 1)
                 {
                     StopCoroutine(Invisivise());
                 }
             }
-            /*else if (clipName == "ReelRodEnd")
+            else if (clipName == "ReelRod")
             {
                 Debug.Log("Reeling");
                 //animator.enabled = true;
                 //sphereScript.isCastedCorrectly = false;
-            }*/
+
+                sphereScript.shootBool = false;
+                animator.SetTrigger("ReelTrigger");
+
+                Debug.Log("Sphere childcount "+transform.Find("Sphere").transform.Find("Fish").childCount);
+                if (transform.Find("Sphere").transform.Find("Fish").childCount == 0)
+                {
+                    Debug.Log("ReelEnd");
+                    animator.SetTrigger("ReelEnd");
+                }
+
+            }
             else if (clipName == "PullRod")
             {                
                 castButton.interactable = false;

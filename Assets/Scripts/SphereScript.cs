@@ -38,12 +38,13 @@ public class SphereScript : MonoBehaviour
         //Debug.Log(force);
         //Debug.Log("tp" + gameObject.transform.position.y);
 
-        if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor)))
+        if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor))&&shootBool==true)
         {
+            Debug.Log("SphereScript 1");
             //Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
 
             //if (shootBool)
-            if(transform.localPosition.y<0.01&& transform.localPosition.z < 1.5)
+            if(transform.localPosition.y<0.01&& transform.localPosition.z < 1.5&&shootBool==true)
             {
                 ShootSphere();
                 shootBool = false;
@@ -56,7 +57,8 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly && (gameObject.transform.position.y < (waterHeight - heightFactor)))
         {
-            Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
+            Debug.Log("SphereScript 2");
+            //Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
             gameObject.transform.Translate(-transform.up * Time.deltaTime*1);
             sphereInPlace = false;
 
@@ -66,6 +68,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly)
         {
+            Debug.Log("SphereScript 3");
             if ((gameObject.transform.position.y <= (waterHeight + heightFactor)) && (gameObject.transform.position.y >= (waterHeight - heightFactor)))
             {
                 //Debug.Log("Stable Sphere");
@@ -79,6 +82,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly == false)
         {
+            Debug.Log("SphereScript 4");
             sphereInPlace = false;
             rb.isKinematic = true;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.Find("RodEnd").transform.position, Time.deltaTime);
@@ -94,7 +98,7 @@ public class SphereScript : MonoBehaviour
         float shootFactor = 15;
         float shootForce = shootFactor * force;
 
-        Debug.Log("Shoot Sphere with a force of: "+shootForce);
+        //Debug.Log("Shoot Sphere with a force of: "+shootForce);
         //rb.AddRelativeForce(new Vector3(0, force, 0));
         rb.AddRelativeForce(new Vector3(0, 0, shootForce));
         //rb.AddRelativeForce(transform.forward * force);

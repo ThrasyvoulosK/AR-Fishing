@@ -25,6 +25,8 @@ public class CircleMouse : MonoBehaviour
 
     FishScript fishScript;
 
+    public bool circlesCompleted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +86,7 @@ public class CircleMouse : MonoBehaviour
                     {
                         //reel should finish
                         Debug.Log("Enough Circles Completed!");
+                        circlesCompleted = true;
                         fishScript.Reel();
 
                         //reset number of circles
