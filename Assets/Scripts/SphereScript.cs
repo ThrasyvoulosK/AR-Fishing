@@ -17,6 +17,8 @@ public class SphereScript : MonoBehaviour
     Transform origin;
 
     public bool shootBool = true;
+
+    public Vector3 properPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class SphereScript : MonoBehaviour
 
         if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor))&&shootBool==true)
         {
-            Debug.Log("SphereScript 1");
+            //Debug.Log("SphereScript 1");
             //Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
 
             //if (shootBool)
@@ -57,7 +59,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly && (gameObject.transform.position.y < (waterHeight - heightFactor)))
         {
-            Debug.Log("SphereScript 2");
+            //Debug.Log("SphereScript 2");
             //Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
             gameObject.transform.Translate(-transform.up * Time.deltaTime*1);
             sphereInPlace = false;
@@ -68,7 +70,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly)
         {
-            Debug.Log("SphereScript 3");
+            //Debug.Log("SphereScript 3");
             if ((gameObject.transform.position.y <= (waterHeight + heightFactor)) && (gameObject.transform.position.y >= (waterHeight - heightFactor)))
             {
                 //Debug.Log("Stable Sphere");
@@ -78,11 +80,15 @@ public class SphereScript : MonoBehaviour
                 //Debug.Log("Don't use Gravity");
                 rb.useGravity = false;
                 rb.isKinematic = true;
+
+                Vector3 currentTransform = gameObject.transform.position;
+                properPosition = currentTransform;
+
             }
         }
         else if (isCastedCorrectly == false)
         {
-            Debug.Log("SphereScript 4");
+            //Debug.Log("SphereScript 4");
             sphereInPlace = false;
             rb.isKinematic = true;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.Find("RodEnd").transform.position, Time.deltaTime);

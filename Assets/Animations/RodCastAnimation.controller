@@ -338,7 +338,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 789f5b763b7a15b48a8b0db448a48cbc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -418,13 +418,13 @@ AnimatorStateMachine:
     m_Position: {x: 510, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2047782547959137351}
-    m_Position: {x: 80, y: -20, z: 0}
+    m_Position: {x: 90, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3136825310620167755}
-    m_Position: {x: 490, y: -60, z: 0}
+    m_Position: {x: 430, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2827798671620238909}
-    m_Position: {x: -60, y: 80, z: 0}
+    m_Position: {x: -60, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3060309981622017565}
     m_Position: {x: 720, y: 0, z: 0}
@@ -433,7 +433,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -80, y: -60, z: 0}
+  m_AnyStatePosition: {x: -120, y: -140, z: 0}
   m_EntryPosition: {x: 10, y: 270, z: 0}
   m_ExitPosition: {x: 230, y: -180, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -445,7 +445,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: ReelTrigger
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2047782547959137351}
   m_Solo: 0
