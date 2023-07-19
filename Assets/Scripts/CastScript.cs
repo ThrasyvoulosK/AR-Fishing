@@ -141,7 +141,7 @@ public class CastScript : MonoBehaviour
                     StopCoroutine(Invisivise());
                 }
             }
-            else if (clipName == "ReelRod")
+            else if (clipName == "ReelRod 1")
             {
                 Debug.Log("Reeling");
                 //animator.enabled = true;
