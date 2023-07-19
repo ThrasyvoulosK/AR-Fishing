@@ -63,12 +63,12 @@ public class CastScript : MonoBehaviour
         if (animatorClipInfo.Length > 0)
         {
             clipName =  animatorClipInfo[0].clip.name;
-            Debug.Log(clipName);
+            //Debug.Log(clipName);
 
             if (clipName == "PushRodEnd 1")
             {
 
-                Debug.Log("Sphere position: " + transform.Find("Sphere").position);
+                //Debug.Log("Sphere position: " + transform.Find("Sphere").position);
 
                 if (transform.Find("Sphere").transform.Find("Fish").childCount < 1)
                 {
@@ -135,6 +135,9 @@ public class CastScript : MonoBehaviour
 
                     StartCoroutine(Invisivise());
 
+                    //reset animation triggers
+                    ResetAllAnimatorTriggers(animator);
+
                 }
                 else if (transform.Find("Sphere").transform.Find("Fish").childCount != 1)
                 {
@@ -143,7 +146,7 @@ public class CastScript : MonoBehaviour
             }
             else if (clipName == "ReelRod 1")
             {
-                Debug.Log("Reeling");
+                //Debug.Log("Reeling");
                 //animator.enabled = true;
                 //sphereScript.isCastedCorrectly = false;
 
@@ -151,20 +154,12 @@ public class CastScript : MonoBehaviour
                 animator.SetTrigger("ReelTrigger");
 
                 //keep sphere in place
-                //transform.Find("Sphere").transform.Translate(Vector3.zero, Space.World);
-                //transform.Find("Sphere").transform.position.Set(0, 2f, 0) ;
-                Debug.Log("Sphere position: "+transform.Find("Sphere").position);
-                /*Vector3 translation= transform.up * Time.deltaTime*20;
-                if (transform.Find("Sphere").position.y > 2)
-                    transform.Translate(translation);
-                else
-                    transform.Translate(-translation);*/
                 transform.Find("Sphere").position = sphereScript.properPosition;
 
-                Debug.Log("Sphere childcount "+transform.Find("Sphere").transform.Find("Fish").childCount);
+                //Debug.Log("Sphere childcount "+transform.Find("Sphere").transform.Find("Fish").childCount);
                 if (transform.Find("Sphere").transform.Find("Fish").childCount == 0)
                 {
-                    Debug.Log("ReelEnd");
+                    //Debug.Log("ReelEnd");
                     animator.SetTrigger("ReelEnd");
                 }
 
@@ -236,6 +231,17 @@ public class CastScript : MonoBehaviour
             }
 
             yield return null;
+        }
+    }
+
+    void ResetAllAnimatorTriggers(Animator animator)
+    {
+        foreach (var trigger in animator.parameters)
+        {
+            if (trigger.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(trigger.name);
+            }
         }
     }
 }

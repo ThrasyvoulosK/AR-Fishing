@@ -139,7 +139,7 @@ public class CircleMouse : MonoBehaviour
             if (bol == false)
                 return;
         }
-        Debug.Log("Circle Completed!");
+        //Debug.Log("Circle Completed!");
         ResetCircle();
     }
 
@@ -159,6 +159,6 @@ public class CircleMouse : MonoBehaviour
         ResetCheckpoints();
 
         numberOfCircles++;
-        Debug.Log("Number Of Circles " + numberOfCircles);
+        //Debug.Log("Number Of Circles " + numberOfCircles);
     }
 }
