@@ -23,4 +23,9 @@ public class PlayButton : MonoBehaviour
         //TEMP: Currently there's only one scene!
         SceneManager.LoadScene(1);
     }
+
+    public void GoToScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
 }
