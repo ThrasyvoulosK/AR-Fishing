@@ -552,6 +552,78 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[0]
+      value: 
+      objectReference: {fileID: 100000, guid: 6934d1b17148efb49865486a061c5d68, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[1]
+      value: 
+      objectReference: {fileID: 100000, guid: f36558c76e2e05f4abbe38535178487c, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[2]
+      value: 
+      objectReference: {fileID: 100000, guid: 40132f8bf1658d1458fb5d67f51bdcc3, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[3]
+      value: 
+      objectReference: {fileID: 100000, guid: 4db41e8ed24a1c04f8e5581433a749d0, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[4]
+      value: 
+      objectReference: {fileID: 100000, guid: 9d0a9029f3b3f9a489b789ecced84630, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fishSOs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 28248e5f17f005244ad108aacbe297fd, type: 2}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fishSOs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b404f18b04d0947a9399c4e5f4dc62, type: 2}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fishSOs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d7c54c71af9c004c8e288f210a43a3e, type: 2}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fishSOs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b89c75a1ede69404ea317b2b2428a81a, type: 2}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fishSOs.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: dc92f95d45502884ea082ea30f8e209b, type: 2}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.8660254
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671057292725913663, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2671057292805242563, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
       propertyPath: m_Name
       value: ARCamera

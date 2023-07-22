@@ -162,7 +162,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 512.9809, y: 137.8627}
+  m_SizeDelta: {x: 554.38, y: 154.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16383351
 MonoBehaviour:
@@ -385,7 +385,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 512.9809, y: 137.8627}
+  m_SizeDelta: {x: 554.38, y: 154.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279611768
 MonoBehaviour:
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Misc (TBA)
+  m_text: Scan To Unlock
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 1947612494}
   - component: {fileID: 1947612493}
   m_Layer: 5
-  m_Name: MiscButton
+  m_Name: ScanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1486,7 +1486,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 512.9809, y: 137.8627}
+  m_SizeDelta: {x: 554.38, y: 154.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1947612493
 MonoBehaviour:
@@ -1527,11 +1527,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1947612494}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 279611771}
+        m_TargetAssemblyTypeName: PlayButton, Assembly-CSharp
+        m_MethodName: GoToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1947612494
 MonoBehaviour:
   m_ObjectHideFlags: 0
