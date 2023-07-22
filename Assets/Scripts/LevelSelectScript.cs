@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,9 @@ public class LevelSelectScript : MonoBehaviour
             if (levl==1)
             {
                 levelButtons[i].GetComponent<Button>().interactable = true;
+
+                //change their description to 'unlocked', too
+                levelButtons[i].transform.parent.transform.Find("Subtitle").GetComponent<TextMeshProUGUI>().SetText("Unlocked!");
             }
         }
     }
