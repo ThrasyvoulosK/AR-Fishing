@@ -32,7 +32,7 @@ public class SphereScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         //if(transform==origin)
@@ -42,7 +42,7 @@ public class SphereScript : MonoBehaviour
 
         if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor))&&shootBool==true)
         {
-            //Debug.Log("SphereScript 1");
+            Debug.Log("SphereScript 1");
             //Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
 
             //if (shootBool)
@@ -53,13 +53,13 @@ public class SphereScript : MonoBehaviour
             }
             //gameObject.transform.Translate(transform.up * Time.deltaTime);
             //Debug.Log(force);
-            rb.AddForce(0,force,0);
+            //rb.AddForce(0,force,0);
             sphereInPlace = false;
             rb.isKinematic = false;
         }
         else if (isCastedCorrectly && (gameObject.transform.position.y < (waterHeight - heightFactor)))
         {
-            //Debug.Log("SphereScript 2");
+            Debug.Log("SphereScript 2");
             //Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
             gameObject.transform.Translate(-transform.up * Time.deltaTime*1);
             sphereInPlace = false;
@@ -70,7 +70,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly)
         {
-            //Debug.Log("SphereScript 3");
+            Debug.Log("SphereScript 3");
             if ((gameObject.transform.position.y <= (waterHeight + heightFactor)) && (gameObject.transform.position.y >= (waterHeight - heightFactor)))
             {
                 //Debug.Log("Stable Sphere");
@@ -88,7 +88,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly == false)
         {
-            //Debug.Log("SphereScript 4");
+            Debug.Log("SphereScript 4");
             sphereInPlace = false;
             rb.isKinematic = true;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.Find("RodEnd").transform.position, Time.deltaTime);
