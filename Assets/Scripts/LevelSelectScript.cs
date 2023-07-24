@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//check if the levels are unlocked and set the message below them accordingly
 public class LevelSelectScript : MonoBehaviour
 {
     public List<GameObject> levelButtons;
@@ -16,8 +17,8 @@ public class LevelSelectScript : MonoBehaviour
         for(int i=1;i<levelButtons.Count;i++)
         {
             int levl = PlayerPrefs.GetInt("level" + (i+1).ToString());
-            Debug.Log("level" + i.ToString());
-            Debug.Log("is level interactable? " + levl+" "+i.ToString());
+            //Debug.Log("level" + i.ToString());
+            //Debug.Log("is level interactable? " + levl+" "+i.ToString());
             if (levl==1)
             {
                 levelButtons[i].GetComponent<Button>().interactable = true;
@@ -26,11 +27,5 @@ public class LevelSelectScript : MonoBehaviour
                 levelButtons[i].transform.parent.transform.Find("Subtitle").GetComponent<TextMeshProUGUI>().SetText("Unlocked!");
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

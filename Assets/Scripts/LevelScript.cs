@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//store information regarding whether new levels are unlocked
 public class LevelScript : MonoBehaviour
 {
     //public List<bool> levelUnlocked;
@@ -20,11 +21,5 @@ public class LevelScript : MonoBehaviour
 
         level2 = PlayerPrefs.GetInt(level2Name, level2);
         level3 = PlayerPrefs.GetInt(level3Name, level3);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

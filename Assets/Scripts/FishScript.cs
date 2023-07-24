@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//script regarding fish-catching
 public class FishScript : MonoBehaviour
 {
     [SerializeField]

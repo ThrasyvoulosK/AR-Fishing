@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//set and resets physics regarding 'sphere' gameobject,
+//based on relative position to water and 'cast' status
 public class SphereScript : MonoBehaviour
 {
     //public float waterHeight = 2.39f;
@@ -19,6 +21,7 @@ public class SphereScript : MonoBehaviour
     public bool shootBool = true;
 
     public Vector3 properPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,16 +36,13 @@ public class SphereScript : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-
-        //if(transform==origin)
-        
+    {        
         //Debug.Log(force);
         //Debug.Log("tp" + gameObject.transform.position.y);
 
         if (isCastedCorrectly && (gameObject.transform.position.y > (waterHeight + heightFactor))&&shootBool==true)
         {
-            Debug.Log("SphereScript 1");
+            //Debug.Log("SphereScript 1");
             //Debug.Log("y>water"+ (gameObject.transform.position.y > waterHeight));
 
             //if (shootBool)
@@ -59,7 +59,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly && (gameObject.transform.position.y < (waterHeight - heightFactor)))
         {
-            Debug.Log("SphereScript 2");
+            //Debug.Log("SphereScript 2");
             //Debug.Log("y<water" + (gameObject.transform.position.y < waterHeight));
             gameObject.transform.Translate(-transform.up * Time.deltaTime*1);
             sphereInPlace = false;
@@ -70,7 +70,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly)
         {
-            Debug.Log("SphereScript 3");
+            //Debug.Log("SphereScript 3");
             if ((gameObject.transform.position.y <= (waterHeight + heightFactor)) && (gameObject.transform.position.y >= (waterHeight - heightFactor)))
             {
                 //Debug.Log("Stable Sphere");
@@ -88,7 +88,7 @@ public class SphereScript : MonoBehaviour
         }
         else if (isCastedCorrectly == false)
         {
-            Debug.Log("SphereScript 4");
+            //Debug.Log("SphereScript 4");
             sphereInPlace = false;
             rb.isKinematic = true;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.Find("RodEnd").transform.position, Time.deltaTime);
@@ -99,6 +99,7 @@ public class SphereScript : MonoBehaviour
         
     }
 
+    //initial force for when 'sphere' is 'cast'
     void ShootSphere()
     {
         float shootFactor = 15;

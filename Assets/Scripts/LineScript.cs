@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//creates a line from the end of the rod to the sphere
 public class LineScript : MonoBehaviour
 {
     LineRenderer lineRenderer;
@@ -9,6 +10,7 @@ public class LineScript : MonoBehaviour
     Transform startingPoint;
     [SerializeField]
     Transform endingPoint;
+
     // Start is called before the first frame update
     void Start()
     {

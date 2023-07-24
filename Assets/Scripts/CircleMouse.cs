@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * In order to catch a fish, the player has to make a number of circles on the 'wheel' and 'handle' gameobjects,
+ * that are children of the 'canvas' object. This number is taken from each fish's Scriptable Object.
+ * To make sure that a circle is performed, a number of checkpoints have to be 'passed' through.
+ */
+
 public class CircleMouse : MonoBehaviour
 {
 
-    //Transform Parent;
-    RectTransform Parent;
-    //Transform Obj;
-    RectTransform Obj;
+    RectTransform Parent; //'wheel' gameobject
+    RectTransform Obj; //'handle' gameobject
+
     public float Radius = 2.4f;
     float Dist ;
     Vector3 MousePos;
@@ -30,10 +35,9 @@ public class CircleMouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Obj = transform;
         Obj = GetComponent<RectTransform>();
-        //Parent = transform.parent;
         Parent = transform.parent.GetComponent<RectTransform>();
+
         Debug.Log(cameraMain.name);
 
         //Radius = 125f;
@@ -60,10 +64,9 @@ public class CircleMouse : MonoBehaviour
                 //Debug.Log(cameraMain.transform.position);
                 ScreenMouse = cameraMain.ScreenToWorldPoint(new Vector3(MousePos.x, MousePos.y, Obj.position.z - cameraMain.transform.position.z));
                 //Debug.Log("screen mouse pos" + ScreenMouse);
-                ///MouseOffset = ScreenMouse - Parent.position;
+
                 MouseOffset = MousePos - Parent.position;
                 //Debug.Log("mouse offset" + MouseOffset);
-                //Obj.position.Set(ScreenMouse.x, ScreenMouse.y,Obj.position.z);
 
                 Dist = Vector2.Distance(new Vector2(Obj.position.x, Obj.position.y), new Vector2(Parent.position.x, Parent.position.y));
                 //Debug.Log("Dist: " + Dist);
@@ -102,12 +105,9 @@ public class CircleMouse : MonoBehaviour
     private void GenerateCheckPoints()
     {
         //add checkpoints to pass
-        //checkPoints.Add(new Vector3(0, Radius, 0));
-        //checkPoints.Add(new Vector3(Radius, 0, 0));
-        //checkPoints.Add(new Vector3(0, -Radius, 0));
-        //checkPoints.Add(new Vector3(-Radius, 0, 0));
         float parX = Parent.position.x;
         float parY = Parent.position.y;
+
         checkPoints.Add(new Vector3(parX, parY+Radius, 0));
         checkPoints.Add(new Vector3(parX+Radius, parY, 0));
         checkPoints.Add(new Vector3(parX, parY-Radius, 0));
@@ -133,13 +133,14 @@ public class CircleMouse : MonoBehaviour
     }
     private void CheckCircle()
     {
-        //throw new NotImplementedException();
         foreach(bool bol in checkPointsPassed)
         {
             if (bol == false)
                 return;
         }
+
         //Debug.Log("Circle Completed!");
+
         ResetCircle();
     }
 
@@ -149,7 +150,7 @@ public class CircleMouse : MonoBehaviour
     {
         checkPointsPassed.Clear();
 
-        //initialise passed checkpoints as false
+        //re-initialise passed checkpoints as false
         for (int i = 0; i < 4; i++)
             checkPointsPassed.Add(false);
     }

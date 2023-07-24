@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class ScreenShotScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //save a screenshot
     public void CaptureScreenshot()
     {
         ScreenCapture.CaptureScreenshot("Screenshot.png");

@@ -5,25 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //load the first available scene
+    //load the first available scene (level select)
     public void PlayLevel()
     {
-        //TEMP: Currently there's only one scene!
         SceneManager.LoadScene(1);
     }
 
+    //change to a specific scene
     public void GoToScene(int scene)
     {
         SceneManager.LoadScene(scene);

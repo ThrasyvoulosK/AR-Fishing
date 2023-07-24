@@ -5,19 +5,14 @@ using UnityEngine;
 public class ResetPosition : MonoBehaviour
 {
     public GameObject startingPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         OriginalPosition();
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //resets the player's position (and rotation) to its original state
     public void OriginalPosition()
     {
         gameObject.transform.position = startingPosition.transform.position;
