@@ -147,6 +147,7 @@ public class FishScript : MonoBehaviour
         Debug.Log("Current Score is: " + score.score);
     }
 
+    //set up dictionary of fish-gameobjects list and fish-scriptable-objects
     void InitialiseDictionary()
     {
         for(int i=0;i<fish.Count;i++)
