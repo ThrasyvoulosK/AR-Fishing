@@ -205,7 +205,7 @@ public class CastScript : MonoBehaviour
         GameObject fishy = transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject;
 
         Renderer renderer = fishy.GetComponent<Renderer>();
-        renderer.material = material;
+        //renderer.material = material;
         Color color = renderer.material.color;
 
         for (float alpha = 1f; alpha >= 0; alpha -= 0.05f)

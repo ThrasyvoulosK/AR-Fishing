@@ -584,6 +584,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[0]
+      value: 
+      objectReference: {fileID: 104517609856167801, guid: 9ae6bab4d07ba714d8bd8156ad240164, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[1]
+      value: 
+      objectReference: {fileID: 7770584863604633872, guid: 161d1d739759b734db50eb952e9915dd, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[2]
+      value: 
+      objectReference: {fileID: 2206852426022253465, guid: cbef52290babb68498a70a3ca6e851ac, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[3]
+      value: 
+      objectReference: {fileID: 1937588542411740048, guid: 7b81a5cfd8c12204883dba5678618454, type: 3}
+    - target: {fileID: 2671057292725913660, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
+      propertyPath: fish.Array.data[4]
+      value: 
+      objectReference: {fileID: 5925960515861282153, guid: 46f8e9d49cac6304e90fa57907ca2b72, type: 3}
     - target: {fileID: 2671057292805242563, guid: 6c5410736c4f1bb4d9f7ea41e2dc4b70, type: 3}
       propertyPath: m_Name
       value: ARCamera
