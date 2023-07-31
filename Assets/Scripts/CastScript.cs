@@ -12,10 +12,7 @@ public class CastScript : MonoBehaviour
     Button castButton;
     //Button reelButton;
     CanvasGroup reelWheel;
-
-    [SerializeField]
-    Material material;
-
+        
     Vector3 PrevPos;
     Vector3 NewPos;
     Vector3 ObjVelocity;
@@ -205,7 +202,6 @@ public class CastScript : MonoBehaviour
         GameObject fishy = transform.Find("Sphere").transform.Find("Fish").GetChild(0).gameObject;
 
         Renderer renderer = fishy.GetComponent<Renderer>();
-        //renderer.material = material;
         Color color = renderer.material.color;
 
         for (float alpha = 1f; alpha >= 0; alpha -= 0.05f)

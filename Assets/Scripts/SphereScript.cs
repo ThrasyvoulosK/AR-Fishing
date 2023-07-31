@@ -7,7 +7,6 @@ using UnityEngine;
 //based on relative position to water and 'cast' status
 public class SphereScript : MonoBehaviour
 {
-    //public float waterHeight = 2.39f;
     public float waterHeight = 2f;
     public float heightFactor = 0.1f;
     public bool isCastedCorrectly = false;
